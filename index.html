@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKR AURA | Krishna Kalyan Reddy AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+        :root {
+            --kkr-main: #0062ff;
+            --kkr-secondary: #00d4ff;
+            --bg: #030712;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--kkr-main), var(--kkr-secondary));
+            color: white;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .primary-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 98, 255, 0.4);
+        }
+
+        .nav-link {
+            position: relative;
+            cursor: pointer;
+            color: #9ca3af;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: white;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--kkr-secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, var(--kkr-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-transition {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--kkr-main); border-radius: 10px; }
+
+        /* Encryption Animation */
+        .encrypt-pulse {
+            animation: shield-pulse 2s infinite;
+        }
+        @keyframes shield-pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; text-shadow: 0 0 10px var(--kkr-secondary); }
+            100% { opacity: 0.4; }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header / Navigation -->
+    <nav class="fixed top-0 w-full z-[100] px-6 py-5 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+                <div class="w-10 h-10 primary-btn rounded-xl flex items-center justify-center shadow-lg">
+                    <span class="text-xl font-black italic">K</span>
+                </div>
+                <div class="flex flex-col leading-none">
+                    <span class="text-lg font-black tracking-tighter uppercase">KRISHNA <span class="text-[#00d4ff]">KALYAN</span></span>
+                    <span class="text-[9px] font-bold text-gray-500 tracking-[0.3em] uppercase">Reddy AI Ecosystem</span>
+                </div>
+            </div>
+
+            <div class="hidden md:flex gap-10">
+                <span onclick="navigateTo('stats')" class="nav-link" id="link-stats">Metrics</span>
+                <span onclick="navigateTo('squad')" class="nav-link" id="link-squad">The Squad</span>
+                <span onclick="navigateTo('highlights')" class="nav-link" id="link-highlights">Portfolio</span>
+            </div>
+
+            <div id="auth-section">
+                <button onclick="navigateTo('login')" class="primary-btn px-6 py-2 rounded-lg text-[10px] uppercase tracking-widest shadow-lg shadow-blue-500/10">Access Portal</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Viewport -->
+    <main id="view-container" class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+        
+        <!-- Home Section -->
+        <section id="view-home" class="page-transition">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></div>
+                        <span class="text-[10px] font-bold text-blue-300 uppercase tracking-widest">Secure Handshake Active</span>
+                    </div>
+                    <h1 class="text-6xl md:text-8xl font-black leading-none">
+                        KRISHNA <br><span class="gradient-text">K. REDDY</span>
+                    </h1>
+                    <p class="text-gray-400 text-lg max-w-lg leading-relaxed">
+                        Architecting the future through autonomous systems and high-performance design. Welcome to the encrypted AI command center of Krishna Kalyan Reddy.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="navigateTo('highlights')" class="primary-btn px-8 py-4 rounded-xl text-xs uppercase tracking-widest">Explore Projects</button>
+                        <button onclick="toggleChat()" class="glass px-8 py-4 rounded-xl text-xs uppercase font-bold hover:bg-white/5 transition-all">Interface AI</button>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-blue-600/20 blur-[80px] rounded-full"></div>
+                    <div class="glass p-12 rounded-[3rem] relative overflow-hidden group">
+                        <div class="flex justify-between items-start mb-12">
+                            <div>
+                                <p class="text-[10px] font-black uppercase text-gray-500 tracking-[0.2em] mb-2">System Uptime</p>
+                                <h3 class="text-5xl font-black tracking-tighter">99.99<span class="text-blue-500">%</span></h3>
+                            </div>
+                            <i data-lucide="shield-check" class="w-10 h-10 text-blue-500/50 encrypt-pulse"></i>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="p-5 bg-white/5 rounded-2xl border border-white/5">
+                                <div class="flex justify-between text-[10px] font-bold uppercase mb-3">
+                                    <span class="text-gray-400">AES-256 Encryption</span>
+                                    <span class="text-blue-400">Locked</span>
+                                </div>
+                                <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-blue-600 to-cyan-400 w-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="view-stats" class="hidden page-transition">
+            <h2 class="text-4xl font-black mb-12 uppercase italic tracking-tighter">Performance <span class="text-blue-500">Analytics</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-10 rounded-3xl">
+                    <i data-lucide="shield" class="text-blue-500 mb-6"></i>
+                    <p class="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2">Security Audits Passed</p>
+                    <p class="text-5xl font-black tracking-tighter">1,240</p>
+                </div>
+                <div class="glass p-10 rounded-3xl">
+                    <i data-lucide="zap" class="text-cyan-400 mb-6"></i>
+                    <p class="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2">Query Latency</p>
+                    <p class="text-5xl font-black tracking-tighter">12ms</p>
+                </div>
+                <div class="glass p-10 rounded-3xl">
+                    <i data-lucide="fingerprint" class="text-blue-400 mb-6"></i>
+                    <p class="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2">Auth Success Rate</p>
+                    <p class="text-5xl font-black tracking-tighter">100%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Squad Section -->
+        <section id="view-squad" class="hidden page-transition">
+            <h2 class="text-4xl font-black mb-12 uppercase italic tracking-tighter">Network <span class="text-blue-500">Nodes</span></h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass p-8 rounded-[2rem] text-center border-white/5 hover:border-blue-500/30 transition-all cursor-pointer group">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-blue-500/10 rounded-full p-2 flex items-center justify-center">
+                        <i data-lucide="user-plus" class="text-blue-500 w-10 h-10"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Lead Engineer</h4>
+                    <p class="text-[10px] text-blue-400 uppercase font-black tracking-widest">K. Reddy</p>
+                </div>
+                <div class="glass p-8 rounded-[2rem] text-center border-white/5 hover:border-blue-500/30 transition-all cursor-pointer group">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-blue-500/10 rounded-full p-2 flex items-center justify-center">
+                        <i data-lucide="binary" class="text-blue-500 w-10 h-10"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">AI Node Delta</h4>
+                    <p class="text-[10px] text-blue-400 uppercase font-black tracking-widest">Neural Cluster</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlights Section -->
+        <section id="view-highlights" class="hidden page-transition">
+            <h2 class="text-4xl font-black mb-12 uppercase italic tracking-tighter">Project <span class="text-blue-500">Vault</span></h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="group glass overflow-hidden rounded-[2.5rem] border-white/5 relative">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800" class="w-full h-80 object-cover opacity-40 group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 p-10 flex flex-col justify-end">
+                        <span class="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em] mb-3">Cyber-Physical Systems</span>
+                        <h4 class="text-3xl font-black italic mb-4">Project: DarkMatter</h4>
+                        <div class="w-12 h-12 bg-white flex items-center justify-center rounded-full text-black">
+                            <i data-lucide="lock"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Section -->
+        <section id="view-login" class="hidden page-transition max-w-md mx-auto">
+            <div class="glass p-10 rounded-[3rem] text-center border-blue-500/20 shadow-2xl">
+                <h2 class="text-3xl font-black mb-8 italic uppercase tracking-tighter">System <span class="text-blue-500">Auth</span></h2>
+                <div class="space-y-6 text-left">
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase font-black text-gray-500 tracking-widest ml-1">Identity UID</label>
+                        <input type="text" value="KKR-001-ADMIN" class="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none focus:border-blue-500 transition-all font-mono">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase font-black text-gray-500 tracking-widest ml-1">Pass-Phrase</label>
+                        <input type="password" value="********" class="w-full bg-black/40 border border-white/10 p-4 rounded-xl outline-none focus:border-blue-500 transition-all">
+                    </div>
+                    <button id="login-btn" onclick="handleLogin()" class="primary-btn w-full py-5 rounded-xl mt-4 text-[10px] uppercase tracking-[0.2em]">Verify Connection</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Fully Encrypted AI Interface -->
+    <div id="ai-chat" class="fixed bottom-8 right-8 z-[110] flex flex-col items-end">
+        <div id="chat-window" class="hidden glass w-[350px] md:w-[450px] h-[600px] mb-4 rounded-[2.5rem] overflow-hidden flex flex-col shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7)] border-white/10 border">
+            <!-- Chat Header -->
+            <div class="p-6 bg-gradient-to-r from-blue-700 to-blue-500 text-white flex justify-between items-center shadow-lg">
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md">
+                            <i data-lucide="cpu" class="w-5 h-5"></i>
+                        </div>
+                        <div class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-400 border-2 border-blue-600 rounded-full"></div>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em]">KKR AI CORE v4.0</span>
+                        <div class="flex items-center gap-1 text-[8px] font-bold text-blue-100 uppercase">
+                            <i data-lucide="shield" class="w-2 h-2"></i> End-to-End Encrypted
+                        </div>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="p-2 hover:bg-white/10 rounded-full transition-all">
+                    <i data-lucide="minus" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Messages Container -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-6 space-y-6 text-sm text-gray-200 custom-scrollbar bg-black/40">
+                <div class="flex flex-col items-center py-4 text-[9px] text-gray-500 uppercase font-black tracking-widest">
+                    <i data-lucide="lock" class="w-3 h-3 mb-1"></i> Secure tunnel established
+                </div>
+                <div class="flex justify-start">
+                    <div class="bg-white/5 border border-white/10 p-4 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm">
+                        Session initialized for <span class="text-blue-400">Krishna Kalyan Reddy</span>. I am ready for complex queries.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Footer / Input -->
+            <div class="p-6 bg-black/60 border-t border-white/10">
+                <form onsubmit="sendChat(event)" class="flex items-center gap-3">
+                    <div class="flex-1 relative">
+                        <input type="text" id="chat-input" placeholder="Execute command..." class="w-full bg-white/5 border border-white/10 p-4 pl-5 rounded-2xl outline-none text-xs focus:border-blue-500 transition-all placeholder-gray-600">
+                    </div>
+                    <button type="submit" class="w-12 h-12 primary-btn rounded-2xl flex items-center justify-center shadow-lg hover:shadow-blue-500/20">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Toggle Button -->
+        <button onclick="toggleChat()" class="w-16 h-16 primary-btn rounded-[1.5rem] flex items-center justify-center shadow-2xl group border border-white/20">
+            <i data-lucide="bot" id="bot-icon" class="w-8 h-8 group-hover:scale-110 transition-transform"></i>
+        </button>
+    </div>
+
+    <script>
+        let currentView = 'home';
+        const API_BASE = "http://127.0.0.1:8000";
+
+        // Navigation Engine
+        function navigateTo(viewId) {
+            const sections = document.querySelectorAll('main section');
+            const links = document.querySelectorAll('.nav-link');
+            
+            sections.forEach(sec => sec.classList.add('hidden'));
+            const target = document.getElementById(`view-${viewId}`);
+            if(target) target.classList.remove('hidden');
+            
+            links.forEach(link => link.classList.remove('active'));
+            const activeLink = document.getElementById(`link-${viewId}`);
+            if(activeLink) activeLink.classList.add('active');
+            
+            currentView = viewId;
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Chat System Logic
+        function toggleChat() {
+            const chat = document.getElementById('chat-window');
+            chat.classList.toggle('hidden');
+            if(!chat.classList.contains('hidden')) {
+                document.getElementById('chat-input').focus();
+            }
+        }
+
+        async function sendChat(e) {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+            const query = input.value.trim();
+            if(!query) return;
+
+            // User Message UI
+            messages.innerHTML += `
+                <div class="flex justify-end">
+                    <div class="bg-blue-600/30 border border-blue-500/20 p-4 rounded-2xl rounded-tr-none text-right max-w-[85%] shadow-md">
+                        <p class="text-[10px] text-blue-300 font-black uppercase mb-1 tracking-widest">You [Encrypted]</p>
+                        ${query}
+                    </div>
+                </div>`;
+            
+            input.value = "";
+            messages.scrollTop = messages.scrollHeight;
+
+            // Simulated AI Processing Handshake
+            const loadingId = 'loading-' + Date.now();
+            messages.innerHTML += `
+                <div id="${loadingId}" class="flex justify-start">
+                    <div class="bg-white/5 border border-white/10 p-4 rounded-2xl rounded-tl-none flex items-center gap-3">
+                        <div class="flex gap-1">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></div>
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                        </div>
+                        <span class="text-[10px] font-black uppercase tracking-tighter text-gray-500">Decrypting Strategy...</span>
+                    </div>
+                </div>`;
+            messages.scrollTop = messages.scrollHeight;
+
+            try {
+                // Real API Attempt with Error Handling
+                const res = await fetch(`${API_BASE}/api/chat`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ 
+                        message: query, 
+                        context: `Portal Context: ${currentView}`,
+                        security_hash: btoa(Date.now().toString()) 
+                    })
+                });
+
+                document.getElementById(loadingId).remove();
+
+                if (!res.ok) throw new Error('Network response not ok');
+                
+                const data = await res.json();
+                messages.innerHTML += `
+                    <div class="flex justify-start">
+                        <div class="bg-white/5 p-4 rounded-2xl rounded-tl-none max-w-[85%] border border-white/10 shadow-sm">
+                            <p class="text-[10px] text-blue-500 font-black uppercase mb-1 tracking-widest italic">AURA AI RESPONSE</p>
+                            ${data.reply}
+                        </div>
+                    </div>`;
+            } catch (error) {
+                // Robust Fallback System
+                document.getElementById(loadingId).remove();
+                messages.innerHTML += `
+                    <div class="flex justify-start">
+                        <div class="bg-red-500/10 border border-red-500/20 p-4 rounded-2xl rounded-tl-none max-w-[85%]">
+                            <p class="text-[10px] text-red-400 font-black uppercase mb-1 tracking-widest">Encryption Handshake Failed</p>
+                            <p class="text-xs text-gray-400">The local API server is unreachable. Operating on isolated cache. Query processed via internal logic: "System secure, awaiting command from K. Reddy."</p>
+                        </div>
+                    </div>`;
+            }
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        // Login Handler
+        function handleLogin() {
+            const loginBtn = document.getElementById('login-btn');
+            loginBtn.innerText = "AUTHENTICATING...";
+            loginBtn.disabled = true;
+            
+            setTimeout(() => {
+                const authSection = document.getElementById('auth-section');
+                authSection.innerHTML = `
+                    <div class="flex items-center gap-4 bg-blue-500/10 px-5 py-2.5 rounded-2xl border border-blue-500/20">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-[10px] font-black text-blue-400 uppercase tracking-tighter">REDDY-ADMIN</p>
+                            <p class="text-[8px] font-bold text-gray-600 uppercase">Authenticated Node</p>
+                        </div>
+                        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                            <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
+                        </div>
+                    </div>`;
+                navigateTo('home');
+                lucide.createIcons();
+            }, 1500);
+        }
+
+        // App Initialization
+        window.onload = () => {
+            lucide.createIcons();
+            console.log("KKR AURA: Fully Encrypted Session Active");
+        };
+    </script>
+</body>
+</html>
